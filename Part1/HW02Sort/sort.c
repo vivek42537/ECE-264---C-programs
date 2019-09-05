@@ -23,7 +23,6 @@ bool checkOrder(int * arr, int size)
   return true;
 }
 
-
 // YOU MUST MODIFY THIS FUNCTION
 #ifdef TEST_SORT
 void ssort(int * arr, int size)
@@ -36,11 +35,11 @@ void ssort(int * arr, int size)
   {
 	for (j = 0; j < (size - 1 - i); j++) 
 	{
-	 if (a[j] > a[j + 1])
+	 if (arr[j] > arr[j + 1])
 	 {
-		temp = a[j + 1];
-		a[j + 1] = a[j];
-		a[j] = temp;
+		temp = arr[j + 1];
+		arr[j + 1] = arr[j];
+		arr[j] = temp;
 	 }
 	}
   }
@@ -59,5 +58,6 @@ void ssort(int * arr, int size)
 
   // After finding the smallest element among the unsorted elements,
   // swap it with the element of the index from the first level
-}
+
+
 #endif
