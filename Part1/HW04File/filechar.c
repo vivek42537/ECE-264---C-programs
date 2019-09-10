@@ -18,14 +18,12 @@ bool countChar(char * filename, int * counts, int size)
 	do
 	{
 		onechar = fgetc(fur);
-		printf(" %c %d\n", onechar, onechar);
-	}   while (onechar != EOF);
-
-
-	if((0 <= onechar) && (onechar <= (size - 1)))
-	{	
+	   
+	 if((0 <= onechar) && (onechar <= (size - 1)))
+	 {	
 		counts[onechar]++;
-	}
+	 }
+        }   while (onechar != EOF);
 	// if a character (call it onechar) is between
 	// 0 and size - 1 (inclusive), increase
 	// counts[onechar] by one
@@ -45,19 +43,24 @@ bool countChar(char * filename, int * counts, int size)
 #endif
 
 #ifdef TEST_PRINTCOUNTS
-int ind;
+
 void printCounts(int * counts, int size)
 {
 	// print the values in counts in the following format
-	// each line has three item
-	if (('a' <= ind) && (ind <= 'z') && ('A' <= ind) && (ind <= 'Z'))
-	{
-		printf("%d, %c, %d\n", ind, ind, counts[ind]);	// ind, onechar, counts[ind]
-	}    	// ind is between 0 and size - 1 (inclusive)
-	else if (counts[ind] != 0)
-	{
-		printf(" ");	// onechar is printed if ind is between 'a' and 'z' or
-	}	// 'A' and 'Z'. Otherwise, print space
-	// if counts[ind] is zero, do not print
+	for (int ind = 0; ind < (size - 1); ind ++)// each line has three item
+	{	
+		while((counts[ind] == 0) && (ind < (size -1)))
+		{
+		 ind++;
+		}
+		if (((65 <= ind) && (ind <= 90)) || ((97 <= ind) && (ind <= 122)))
+		{
+			printf("%d, %c, %d\n", ind, ind, counts[ind]);	// ind, onechar, counts[ind]
+		}    	// ind is between 0 and size - 1 (inclusive)
+		else if (counts[ind] != 0)
+		{
+			printf("%d,  , %d\n", ind, counts[ind]);	// onechar is printed if ind is between 'a' and 'z' or
+		}	// 'A' and 'Z'. Otherwise, print space
+	}	// if counts[ind] is zero, do not print
 }
 #endif
