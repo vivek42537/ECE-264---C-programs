@@ -29,14 +29,14 @@ void eliminate(int n, int k)
   int q = 0; //array counter i.e 1,2,3
   int l = n; // elements left
 
-  for(int j = 0; l > 1; j++)
+  for(int j = 0; l > 0; j++)
     {
      if (arr[j - 1] == 'X') //in order to skip X count
 	{
 	 q = q - 1;
 	}
-
-     if (q % k == 0) //marks x
+    
+     if (q % k == 0 && q != 0) //marks x
 	{
 	 arr[j - 1] = 'X';
 	 l = l - 1;
