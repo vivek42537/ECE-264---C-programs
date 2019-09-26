@@ -32,9 +32,6 @@ int main(int argc, char * * argv)
 #endif  
 
   
-  // call qsort to sort the vectors, use argv[3] to determine which
-  // attribute to sort
-
 #ifdef DEBUG
   printf("\n");
   printVector(vecArr, numElem);
