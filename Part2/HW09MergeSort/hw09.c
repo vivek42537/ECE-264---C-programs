@@ -31,51 +31,74 @@ bool readData(char * filename, int * * arr, int * size)
 {
   // use fopen to open the file for read
   // return false if fopen fails
+  FILE * fur = fopen(filename, "r");  
 
-
+  if (fur == NULL)
+  {
+   fclose(fur);
+   return false;
+  }
+   
 
 
   // use fseek to go to the end of the file
   // check whether fseek fails
   // if fseek fails, fclose and return false
-
-
-
-
+  int sick = fseek(fur, 0, SEEK_END);
+  if (sick != 0)
+  {
+   fclose(fur);
+   return false;
+  }
+   
 
   // use ftell to determine the size of the file
-
+  int thicc;
+  thicc = ftell(fur);
 
 
   
   // use fseek to go back to the beginning of the file
   // check whether fseek fails
-
-
-
+  sick = fseek(fur, 0, SEEK_SET);
+  if (sick != 0)
+  {
+   fclose(fur);
+   return false;
+  }
   
   // if fseek fails, fclose and return false
 
-
-
   // the number of integers is the file's size divided by
   // size of int  
-
-
-
-
-  
+  int numElem;
+  numElem = thicc / sizeof(int);
 
   // allocate memory for the array
 
 
   // if malloc fails, fclose and return false
+  int *newarr = malloc(numElem * sizeof(int)); 
+       
+  if (newarr == NULL)
+  {
+   fclose(fur);
+   free(newarr);
+   return false;
+  }
+  
 
-
-
+  int red;
+  red = fread(newarr, sizeof(int), numElem, fur);
   // use fread to read the number of integers in the file
-
-
+  if (red != numElem)
+   {
+     free(newarr);
+     fclose(fur);
+     return false;
+   } 
+  fclose(fur);
+    
 
 
   // if fread does not read the correct number
@@ -92,13 +115,12 @@ bool readData(char * filename, int * * arr, int * size)
 
   
   // update the argument for the array address
-
-
+  *arr = newarr;
+  *size = numElem;
   
   // update the size of the array
 
 
-  
   return true;
 }
 #endif
@@ -110,19 +132,30 @@ bool readData(char * filename, int * * arr, int * size)
 bool writeData(char * filename, const int * arr, int size)
 {
   // fopen for write
-
+  FILE * furr = fopen(filename, "w");
 
 
   // if fopen fails, return false
-
+  if(furr == NULL)
+  {
+   return false;
+  }
 
 
   // use fwrite to write the entire array to a file
-
+  int i;
+  i = fwrite(arr, sizeof(int), size, furr);
 
 
   // check whether all elements of the array have been written
+  if (i != size)
+  {
+   fclose(furr);
+   return false;
+  }
 
+  fclose(furr);
+  return true;
 
 
   // fclose
@@ -166,27 +199,59 @@ static void merge(int * arr, int l, int m, int r)
   printInput("Merge in", arr, l, m, r);
 #endif
 
-  // if one or both of the arrays are empty, do nothing
-
-
-
-
-
   // Hint: you may consider to allocate memory here.
   // Allocating additiional memory makes this function easier to write
+  int n1 = m - l + 1;
+  int n2 = r - m;
 
+  int *left = malloc(sizeof(int) * n1);
+  int *right = malloc(sizeof(int) * n2);
 
-
-
+  for(int b = 0; b < n1; b++)
+  {
+   left[b] = arr[l + b];
+  }
+  for(int j = 0; j < n2; j++)
+  {
+   right[j] = arr[m + 1 + j];
+  }
   // merge the two parts (each part is already sorted) of the array
   // into one sorted array
-
+  int b = 0;
+  int j = 0;
+  int k = l;
+  while (( b < n1) && (j < n2))
+  {
+   if (left[b] <= right[j])
+   {
+    arr[k] = left[b];
+    b++;
+    k++;
+   }
+   else if (left[b] > right[j])
+   {
+    arr[k] = right[j];
+    j++;
+    k++;
+   }
+  }
   
-
-
-
-
-  
+ while (b < n1)
+ {
+  arr[k] = left[b];
+  b++;
+  k++;
+ }
+ 
+ while (j < n2)
+ {
+  arr[k] = right[j];
+  j++;
+  k++;
+ }
+ 
+ free(left);
+ free(right);  
 
 
   // the following should be at the bottom of the function
@@ -217,8 +282,14 @@ void mergeSort(int arr[], int l, int r)
 #endif
 
   // if the array has no or one element, do nothing
+  if (l < r)
+  {
+   int m = (l + r)/2;
+   mergeSort(arr, l, m);
+   mergeSort(arr, m+1, r);
 
-
+   merge(arr, l, m, r); 
+  }
 
   // divide the array into two arrays
   // call mergeSort with each array
