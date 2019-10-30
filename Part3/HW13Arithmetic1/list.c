@@ -23,7 +23,30 @@
 //    return true
 bool readList(char * filename, List * arithlist)
 {
-  return true;
+  char air[WORDLENGTH];
+  
+  FILE * fur = fopen(filename,"r");
+  if(arithlist == NULL)
+	return false;
+
+  if(fur == NULL)
+	return false;
+
+  while(fgets(air, WORDLENGTH, fur) != NULL)
+  {
+	if(air == NULL)
+	{
+		free(air);
+		fclose(fur);
+		return false;
+	}
+	else
+	{
+		addNode(arithlist, air);
+	}
+  }
+  fclose(fur);
+  return true;	
 }
 #endif
 
@@ -33,6 +56,20 @@ bool readList(char * filename, List * arithlist)
 // release the memory of the list 
 void deleteList(List * arithlist)
 {
+ if(arithlist != NULL)
+ {
+ 	ListNode * curr = arithlist->tail;
+	ListNode * bef = NULL;
+	while(curr != NULL)
+	{
+		bef = curr->prev;
+		free(curr);
+		curr = bef;
+	}
+  free(bef);
+  }
+  free(arithlist);
+ 
 }
 #endif
 
@@ -50,6 +87,27 @@ void deleteList(List * arithlist)
 // insert the ListNode to the list
 void addNode(List * arithlist, char * word)
 {
+  if(arithlist == NULL)
+        return;
+
+  ListNode * newNode = malloc(sizeof(ListNode));
+  strcpy(newNode->word,word);
+  
+  if(arithlist->head == NULL)
+  {
+	arithlist->head = newNode;
+	arithlist->tail = newNode;
+  }
+  else
+  {
+  	newNode->prev = NULL;
+	newNode->prev = arithlist->tail;
+  	newNode->next = NULL;
+
+    
+	arithlist->tail->next = newNode;
+        arithlist->tail = newNode;
+  }
 }
 #endif
 
@@ -69,6 +127,38 @@ void addNode(List * arithlist, char * word)
 // Be careful about delete the first or the last node
 bool deleteNode(List * arithlist, ListNode * ln)
 {
+  if(arithlist == NULL)
+	return false;
+  
+  if((arithlist->tail == NULL) && (arithlist->head == NULL))
+	return false;
+
+  if(ln == NULL)
+	return false;
+  
+  ListNode * temp = arithlist->head;
+ 
+  while((temp != NULL) && (temp != ln))
+  {
+	temp = temp->next;
+  }
+ 
+  if(temp->prev != NULL)
+  {
+   temp->prev->next = ln->next;
+  }
+  else{
+  arithlist->head = ln->next;
+  }
+
+  if(temp->next != NULL){
+  temp->next->prev = ln->prev;
+  }
+  else{
+  arithlist->tail = ln->prev;
+  }
+  
+  free(ln);	  
   return true;
 }
 #endif

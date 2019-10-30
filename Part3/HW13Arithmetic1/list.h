@@ -5,25 +5,25 @@
 #ifndef LIST_H
 #define LIST_H
 
-#define WORDLENGTH 5
-// assume each numbers use at most 4 digits
+#define WORDLENGTH 10
+// assume each numbers use at most 9 digits
 // the fifth character stores '\0'
 
 #include <stdbool.h>
 
 typedef struct Node
 {
-  char word[WORDLENGTH];
-  // word is a string and one element must be '\0'
-  struct Node * next;
-  struct Node * prev;
-  // doubly linked list
+	char word[WORDLENGTH];
+	// word is a string and one element must be '\0'
+	struct Node * next;
+	struct Node * prev;
+	// doubly linked list
 } ListNode;
 
 typedef struct
 {
-  ListNode * head;
-  ListNode * tail;
+	ListNode * head;
+	ListNode * tail;
 } List;
 
 bool readList(char * filename, List * arithlist);
@@ -32,3 +32,4 @@ void addNode(List * arithlist, char * word);
 bool deleteNode(List * arithlist, ListNode * ln);
 
 #endif
+
