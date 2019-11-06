@@ -1,141 +1,141 @@
-==17172== Memcheck, a memory error detector
-==17172== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==17172== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==17172== Command: ./hw13 inputs/test2
-==17172== Parent PID: 17171
-==17172== 
---17172-- 
---17172-- Valgrind options:
---17172--    --tool=memcheck
---17172--    --log-file=memcheck.txt
---17172--    --leak-check=full
---17172--    --verbose
---17172-- Contents of /proc/version:
---17172--   Linux version 2.6.32-754.23.1.el6.x86_64 (mockbuild@x86-01.bsys.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-23) (GCC) ) #1 SMP Thu Sep 26 12:05:41 UTC 2019
---17172-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---17172-- Page sizes: currently 4096, max supported 4096
---17172-- Valgrind library directory: /usr/lib64/valgrind
---17172-- Reading syms from /home/shay/a/vkhanolk/Ninety/Part3/HW13Arithmetic1/hw13
---17172-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---17172--    object doesn't have a dynamic symbol table
---17172-- Reading syms from /lib64/ld-2.12.so
---17172--   Considering /usr/lib/debug/.build-id/97/af4b77212f74cff72b6c013e6aa2d74a97ef60.debug ..
---17172--   .. build-id is valid
---17172-- Scheduler: using generic scheduler lock implementation.
---17172-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==17172== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-17172-by-vkhanolk-on-ecegrid-thin1.ecn.purdue.edu
-==17172== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-17172-by-vkhanolk-on-ecegrid-thin1.ecn.purdue.edu
-==17172== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-17172-by-vkhanolk-on-ecegrid-thin1.ecn.purdue.edu
-==17172== 
-==17172== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==17172== don't want to do, unless you know exactly what you're doing,
-==17172== or are doing some strange experiment):
-==17172==   /usr/lib64/valgrind/../../bin/vgdb --pid=17172 ...command...
-==17172== 
-==17172== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==17172==   /path/to/gdb ./hw13
-==17172== and then give GDB the following command
-==17172==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=17172
-==17172== --pid is optional if only one valgrind process is running
-==17172== 
---17172-- REDIR: 0x3d29e17f90 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---17172-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---17172-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---17172-- REDIR: 0x3d29e17da0 (index) redirected to 0x4a07c30 (index)
---17172-- REDIR: 0x3d29e17e20 (strcmp) redirected to 0x4a08570 (strcmp)
---17172-- Reading syms from /lib64/libc-2.12.so
---17172--   Considering /usr/lib/debug/.build-id/a5/f93642576869a169bacf9771c674e0cb91fcbb.debug ..
---17172--   .. build-id is valid
---17172-- REDIR: 0x3d2a284d80 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---17172-- REDIR: 0x3d2a287040 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---17172-- REDIR: 0x3d2a282cf0 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
---17172-- REDIR: 0x3d2a27aac0 (malloc) redirected to 0x4a069ac (malloc)
---17172-- REDIR: 0x3d2a283400 (memchr) redirected to 0x4a08610 (memchr)
---17172-- REDIR: 0x3d2a289720 (memcpy) redirected to 0x4a08b60 (memcpy)
---17172-- REDIR: 0x3d2a280c20 (strcpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---17172-- REDIR: 0x3d2a334460 (???) redirected to 0x4a07fd0 (strcpy)
---17172-- REDIR: 0x3d2a27b920 (free) redirected to 0x4a063a9 (free)
---17172-- REDIR: 0x3d2a281210 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
---17172-- REDIR: 0x3d2a28aba0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x4008A0: printList (main.c:27)
-==17172==    by 0x40091E: main (main.c:52)
-==17172== 
---17172-- REDIR: 0x3d2a27f6e0 (index) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---17172-- REDIR: 0x3d2a328650 (__strchr_sse42) redirected to 0x4a07b40 (index)
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x400F6E: deleteNode (list.c:146)
-==17172==    by 0x400BDB: calculate (calculate.c:102)
-==17172==    by 0x40092A: main (main.c:53)
-==17172== 
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x400F6E: deleteNode (list.c:146)
-==17172==    by 0x400BF2: calculate (calculate.c:103)
-==17172==    by 0x40092A: main (main.c:53)
-==17172== 
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x4008A0: printList (main.c:27)
-==17172==    by 0x40093A: main (main.c:55)
-==17172== 
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x400E1E: deleteList (list.c:63)
-==17172==    by 0x400952: main (main.c:61)
-==17172== 
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x4A063E3: free (vg_replace_malloc.c:446)
-==17172==    by 0x400E2B: deleteList (list.c:69)
-==17172==    by 0x400952: main (main.c:61)
-==17172== 
-==17172== 
-==17172== HEAP SUMMARY:
-==17172==     in use at exit: 0 bytes in 0 blocks
-==17172==   total heap usage: 19 allocs, 19 frees, 1,128 bytes allocated
-==17172== 
-==17172== All heap blocks were freed -- no leaks are possible
-==17172== 
-==17172== Use --track-origins=yes to see where uninitialised values come from
-==17172== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 8 from 6)
-==17172== 
-==17172== 1 errors in context 1 of 6:
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x4A063E3: free (vg_replace_malloc.c:446)
-==17172==    by 0x400E2B: deleteList (list.c:69)
-==17172==    by 0x400952: main (main.c:61)
-==17172== 
-==17172== 
-==17172== 1 errors in context 2 of 6:
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x400E1E: deleteList (list.c:63)
-==17172==    by 0x400952: main (main.c:61)
-==17172== 
-==17172== 
-==17172== 1 errors in context 3 of 6:
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x4008A0: printList (main.c:27)
-==17172==    by 0x40093A: main (main.c:55)
-==17172== 
-==17172== 
-==17172== 1 errors in context 4 of 6:
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x400F6E: deleteNode (list.c:146)
-==17172==    by 0x400BF2: calculate (calculate.c:103)
-==17172==    by 0x40092A: main (main.c:53)
-==17172== 
-==17172== 
-==17172== 1 errors in context 5 of 6:
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x400F6E: deleteNode (list.c:146)
-==17172==    by 0x400BDB: calculate (calculate.c:102)
-==17172==    by 0x40092A: main (main.c:53)
-==17172== 
-==17172== 
-==17172== 1 errors in context 6 of 6:
-==17172== Conditional jump or move depends on uninitialised value(s)
-==17172==    at 0x4008A0: printList (main.c:27)
-==17172==    by 0x40091E: main (main.c:52)
-==17172== 
---17172-- 
---17172-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---17172-- used_suppression:      4 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==17172== 
-==17172== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 8 from 6)
+==18624== Memcheck, a memory error detector
+==18624== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==18624== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==18624== Command: ./hw13 inputs/test2
+==18624== Parent PID: 18623
+==18624== 
+--18624-- 
+--18624-- Valgrind options:
+--18624--    --tool=memcheck
+--18624--    --log-file=memcheck.txt
+--18624--    --leak-check=full
+--18624--    --verbose
+--18624-- Contents of /proc/version:
+--18624--   Linux version 2.6.32-754.23.1.el6.x86_64 (mockbuild@x86-01.bsys.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-23) (GCC) ) #1 SMP Thu Sep 26 12:05:41 UTC 2019
+--18624-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--18624-- Page sizes: currently 4096, max supported 4096
+--18624-- Valgrind library directory: /usr/lib64/valgrind
+--18624-- Reading syms from /home/shay/a/vkhanolk/Ninety/Part3/HW13Arithmetic1/hw13
+--18624-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--18624--    object doesn't have a dynamic symbol table
+--18624-- Reading syms from /lib64/ld-2.12.so
+--18624--   Considering /usr/lib/debug/.build-id/97/af4b77212f74cff72b6c013e6aa2d74a97ef60.debug ..
+--18624--   .. build-id is valid
+--18624-- Scheduler: using generic scheduler lock implementation.
+--18624-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==18624== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-18624-by-vkhanolk-on-ecegrid-thin1.ecn.purdue.edu
+==18624== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-18624-by-vkhanolk-on-ecegrid-thin1.ecn.purdue.edu
+==18624== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-18624-by-vkhanolk-on-ecegrid-thin1.ecn.purdue.edu
+==18624== 
+==18624== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==18624== don't want to do, unless you know exactly what you're doing,
+==18624== or are doing some strange experiment):
+==18624==   /usr/lib64/valgrind/../../bin/vgdb --pid=18624 ...command...
+==18624== 
+==18624== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==18624==   /path/to/gdb ./hw13
+==18624== and then give GDB the following command
+==18624==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=18624
+==18624== --pid is optional if only one valgrind process is running
+==18624== 
+--18624-- REDIR: 0x3d29e17f90 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--18624-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--18624-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--18624-- REDIR: 0x3d29e17da0 (index) redirected to 0x4a07c30 (index)
+--18624-- REDIR: 0x3d29e17e20 (strcmp) redirected to 0x4a08570 (strcmp)
+--18624-- Reading syms from /lib64/libc-2.12.so
+--18624--   Considering /usr/lib/debug/.build-id/a5/f93642576869a169bacf9771c674e0cb91fcbb.debug ..
+--18624--   .. build-id is valid
+--18624-- REDIR: 0x3d2a284d80 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--18624-- REDIR: 0x3d2a287040 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--18624-- REDIR: 0x3d2a282cf0 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--18624-- REDIR: 0x3d2a27aac0 (malloc) redirected to 0x4a069ac (malloc)
+--18624-- REDIR: 0x3d2a283400 (memchr) redirected to 0x4a08610 (memchr)
+--18624-- REDIR: 0x3d2a289720 (memcpy) redirected to 0x4a08b60 (memcpy)
+--18624-- REDIR: 0x3d2a280c20 (strcpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--18624-- REDIR: 0x3d2a334460 (???) redirected to 0x4a07fd0 (strcpy)
+--18624-- REDIR: 0x3d2a27b920 (free) redirected to 0x4a063a9 (free)
+--18624-- REDIR: 0x3d2a281210 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--18624-- REDIR: 0x3d2a28aba0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x4008A0: printList (main.c:27)
+==18624==    by 0x40091E: main (main.c:52)
+==18624== 
+--18624-- REDIR: 0x3d2a27f6e0 (index) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--18624-- REDIR: 0x3d2a328650 (__strchr_sse42) redirected to 0x4a07b40 (index)
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x400F6E: deleteNode (list.c:146)
+==18624==    by 0x400BDB: calculate (calculate.c:102)
+==18624==    by 0x40092A: main (main.c:53)
+==18624== 
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x400F6E: deleteNode (list.c:146)
+==18624==    by 0x400BF2: calculate (calculate.c:103)
+==18624==    by 0x40092A: main (main.c:53)
+==18624== 
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x4008A0: printList (main.c:27)
+==18624==    by 0x40093A: main (main.c:55)
+==18624== 
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x400E1E: deleteList (list.c:63)
+==18624==    by 0x400952: main (main.c:61)
+==18624== 
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x4A063E3: free (vg_replace_malloc.c:446)
+==18624==    by 0x400E2B: deleteList (list.c:69)
+==18624==    by 0x400952: main (main.c:61)
+==18624== 
+==18624== 
+==18624== HEAP SUMMARY:
+==18624==     in use at exit: 0 bytes in 0 blocks
+==18624==   total heap usage: 19 allocs, 19 frees, 1,128 bytes allocated
+==18624== 
+==18624== All heap blocks were freed -- no leaks are possible
+==18624== 
+==18624== Use --track-origins=yes to see where uninitialised values come from
+==18624== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 8 from 6)
+==18624== 
+==18624== 1 errors in context 1 of 6:
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x4A063E3: free (vg_replace_malloc.c:446)
+==18624==    by 0x400E2B: deleteList (list.c:69)
+==18624==    by 0x400952: main (main.c:61)
+==18624== 
+==18624== 
+==18624== 1 errors in context 2 of 6:
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x400E1E: deleteList (list.c:63)
+==18624==    by 0x400952: main (main.c:61)
+==18624== 
+==18624== 
+==18624== 1 errors in context 3 of 6:
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x4008A0: printList (main.c:27)
+==18624==    by 0x40093A: main (main.c:55)
+==18624== 
+==18624== 
+==18624== 1 errors in context 4 of 6:
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x400F6E: deleteNode (list.c:146)
+==18624==    by 0x400BF2: calculate (calculate.c:103)
+==18624==    by 0x40092A: main (main.c:53)
+==18624== 
+==18624== 
+==18624== 1 errors in context 5 of 6:
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x400F6E: deleteNode (list.c:146)
+==18624==    by 0x400BDB: calculate (calculate.c:102)
+==18624==    by 0x40092A: main (main.c:53)
+==18624== 
+==18624== 
+==18624== 1 errors in context 6 of 6:
+==18624== Conditional jump or move depends on uninitialised value(s)
+==18624==    at 0x4008A0: printList (main.c:27)
+==18624==    by 0x40091E: main (main.c:52)
+==18624== 
+--18624-- 
+--18624-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--18624-- used_suppression:      4 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==18624== 
+==18624== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 8 from 6)
