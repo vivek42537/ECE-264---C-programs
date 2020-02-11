@@ -258,7 +258,7 @@ void realSort(int listSize, Node** list, long sas, long *n_comp, int sleep)
         add--;
       }
     }
-  }
+  } freeNode(&front);
 }
 
 Node * List_Shellsort(Node *list, long *n_comp)

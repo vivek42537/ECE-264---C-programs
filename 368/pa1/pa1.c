@@ -4,8 +4,6 @@
 #include "shell_array.h"
 #include "shell_list.h"
 
-void printArr(long * arr, int size);
-void printList(Node *head);
 void freelist(Node **z);
 
 void freelist(Node **z)
@@ -34,7 +32,7 @@ int main(int argc, char **argv)
         long n_comp = 0;
         int done;
         long *arr = Array_Load_From_File(argv[2], &size);
-        printArr(arr, size);
+       
         if(arr == NULL)
         {
             return EXIT_FAILURE;
@@ -47,7 +45,7 @@ int main(int argc, char **argv)
         else
         {
             Array_Shellsort(arr, size, &n_comp);
-            printArr(arr, size);
+           
             done = Array_Save_To_File(argv[3], arr, size);
         }
         printf("%ld\n", n_comp);
@@ -61,33 +59,15 @@ int main(int argc, char **argv)
     {
         long n_comp = 0;
         Node *head = List_Load_From_File(argv[2]);
-        printList(head);
+       
         head = List_Shellsort(head, &n_comp);
-        printList(head);
+     
         List_Save_To_File(argv[3], head);
+	freelist(&head);
         printf("%ld\n", n_comp);
+    freelist(&head);
     }
     return EXIT_SUCCESS;
 
 }
 
-void printArr(long * arr, int size)
-{
-  int x = 0;
-  for (x = 0; x < size; x++)
-    {
-      printf("val: %ld\n", arr[x]);
-    }
-    printf("end"); 
-} 
-
-void printList(Node * head)
- { 
-      Node * p = head;
-      printf("printnode: ");
-      while (p != NULL)
-         {
-            printf("%ld\n", p -> value);
-            p = p -> next;
-         }
- }
